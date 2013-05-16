@@ -22,7 +22,7 @@ namespace Calc
 			Pow, Koren,
 			Sin, Cos, Tan,
 			Asin, Acos, Atan,
-			Ln,Lg,
+			Ln, Lg,
 			Fact, Dot
 		}
 
@@ -31,7 +31,7 @@ namespace Calc
 				{Funcs.Plus, "+"},
 				{Funcs.Minus, "-"},
 				{Funcs.Multiplicate, "*"}
-			}; 
+			};
 
 		public string Expression
 		{
@@ -57,7 +57,7 @@ namespace Calc
 		double SetAngle(double x)
 		{
 			if (angle == Angle.Deg)
-				return x*Math.PI/180;
+				return x * Math.PI / 180;
 			return x;
 		}
 
@@ -162,10 +162,10 @@ namespace Calc
 						break;
 					case '%':
 						currentChar++;
-						result = result*0.01;
+						result = result * 0.01;
 						break;
 					default:
-						
+
 						break;
 				}
 			}
@@ -177,7 +177,7 @@ namespace Calc
 			double result = Brackets();
 			if (currentChar == Expression.Length)
 				return result;
-			while ( Match("sin") || Match("cos") ||
+			while (Match("sin") || Match("cos") ||
 					Match("tan") || Match("asin") ||
 					Match("acos") || Match("atan") ||
 					Match("ln") || Match("lg"))
@@ -235,7 +235,7 @@ namespace Calc
 		{
 			if (x <= 1)
 				return 1;
-			return x*Factorial(x - 1);
+			return x * Factorial(x - 1);
 		}
 
 		private double Brackets()
@@ -248,7 +248,7 @@ namespace Calc
 				if (CurrentChar == '(')
 				{
 					currentChar++;
-					if (Expression.LastIndexOf(')') == -1 || Expression.LastIndexOf(')') < currentChar-1)
+					if (Expression.LastIndexOf(')') == -1 || Expression.LastIndexOf(')') < currentChar - 1)
 					{
 						//Console.WriteLine("Нету закрывающей скобки");
 						return result;
@@ -272,11 +272,23 @@ namespace Calc
 		{
 			string number = "0";
 			while ((Expression.Length != currentChar) && (
-															(CurrentChar >= '0') &&
-															(CurrentChar <= '9') ||
-															(CurrentChar == '.') ||
-															CurrentChar == ','))
+				                                             (CurrentChar >= '0') &&
+				                                             (CurrentChar <= '9') ||
+				                                             (CurrentChar == '.') ||
+				                                             (CurrentChar == ',') ||
+				                                             (CurrentChar == 'e') ||
+															 (CurrentChar == 'π'))) 
 			{
+				if (CurrentChar == 'e')
+				{
+					currentChar++;
+					return Math.E;
+				}
+				if (CurrentChar == 'π')
+				{
+					currentChar++;
+					return Math.PI;
+				}
 				number += Expression[currentChar++];
 			}
 			return double.Parse(number);

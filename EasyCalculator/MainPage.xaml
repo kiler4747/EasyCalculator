@@ -61,5 +61,7 @@
 		<Button Content="(" Click="Button_Click"  Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="72"/>
 		<Button Content=")" Click="Button_Click"  Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="72"/>
 		<Button Content="%" Click="Button_Click" Grid.Row="2" Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="72"/>
+		<Button Content="e" Click="Button_Click"  Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="72"/>
+		<Button Content="π" Click="Button_Click"  Grid.Row="5" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="72"/>
 	</Grid>
 </Page>
